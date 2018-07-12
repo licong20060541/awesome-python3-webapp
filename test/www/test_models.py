@@ -9,10 +9,10 @@ __author__ = 'Michael Liao'
 
 import time, uuid
 
-from orm import Model, StringField, BooleanField, FloatField, TextField
+from test_orm import Model, StringField, BooleanField, FloatField, TextField
 
 def next_id():
-    return '%015d%s000' % (int(time.time() * 1000), uuid.uuid4().hex) # %015d 15位，不足补充0
+    return '%015d%s000' % (int(time.time() * 1000), uuid.uuid4().hex)
 
 class User(Model):
     __table__ = 'users'
@@ -47,5 +47,3 @@ class Comment(Model):
     user_image = StringField(ddl='varchar(500)')
     content = TextField()
     created_at = FloatField(default=time.time)
-
-# ??? 创建数据库的在哪里？？？
